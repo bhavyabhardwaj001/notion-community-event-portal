@@ -1,8 +1,13 @@
 const express = require('express');
 const router = express.Router();
 const { getRegistrations } = require('../controllers/registrationController');
+const { loginAdmin } = require('../controllers/adminController');
+const { protect } = require('../middleware/authMiddleware');
 
-// GET all registrations (We will protect this later with admin middleware)
-router.get('/', getRegistrations);
+// POST admin login
+router.post('/login', loginAdmin);
+
+// GET all registrations (Protected)
+router.get('/', protect, getRegistrations);
 
 module.exports = router;
