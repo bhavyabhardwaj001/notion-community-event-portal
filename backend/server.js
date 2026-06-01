@@ -1,9 +1,13 @@
 const express = require('express');
 const dotenv = require('dotenv');
 const cors = require('cors');
+const connectDB = require('./config/db');
 
 // Load environment variables
 dotenv.config();
+
+// Connect to Database
+connectDB();
 
 const app = express();
 
@@ -15,6 +19,11 @@ app.use(cors());
 app.get('/', (req, res) => {
   res.send('Notion Community Event Portal API is running...');
 });
+
+// API Routes
+app.use('/api/events', require('./routes/eventRoutes'));
+app.use('/api/register', require('./routes/registrationRoutes'));
+app.use('/api/registrations', require('./routes/adminRoutes'));
 
 const PORT = process.env.PORT || 5000;
 
