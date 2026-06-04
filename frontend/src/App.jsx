@@ -3,6 +3,9 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 import Home from './pages/Home';
+import Events from './pages/Events';
+import EventDetails from './pages/EventDetails';
+import Registration from './pages/Registration';
 
 function App() {
   return (
@@ -14,9 +17,9 @@ function App() {
         <main className="flex-grow">
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/events" element={<div className="container mx-auto px-4 py-12 text-center text-gray-500">Events Page Coming Soon</div>} />
-            <Route path="/events/:id" element={<div className="container mx-auto px-4 py-12 text-center text-gray-500">Event Details Coming Soon</div>} />
-            <Route path="/register/:id" element={<div className="container mx-auto px-4 py-12 text-center text-gray-500">Registration Coming Soon</div>} />
+            <Route path="/events" element={<Events />} />
+            <Route path="/events/:id" element={<EventDetails />} />
+            <Route path="/register/:id" element={<Registration />} />
           </Routes>
         </main>
         
