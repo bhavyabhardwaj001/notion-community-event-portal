@@ -6,7 +6,7 @@ const { protect } = require('../middleware/authMiddleware');
 // GET all events
 router.get('/', getEvents);
 
-// GET single event by id
+// GET single event by using id
 router.get('/:id', getEventById);
 
 // POST create a new event (Protected Admin only)

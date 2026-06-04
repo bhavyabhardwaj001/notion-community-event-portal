@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
+import Home from './pages/Home';
 
 function App() {
   return (
@@ -12,7 +13,7 @@ function App() {
         {/* Main Content Area */}
         <main className="flex-grow">
           <Routes>
-            <Route path="/" element={<div className="container mx-auto px-4 py-12 text-center text-gray-500">Home Page Content Coming Soon</div>} />
+            <Route path="/" element={<Home />} />
             <Route path="/events" element={<div className="container mx-auto px-4 py-12 text-center text-gray-500">Events Page Coming Soon</div>} />
             <Route path="/events/:id" element={<div className="container mx-auto px-4 py-12 text-center text-gray-500">Event Details Coming Soon</div>} />
             <Route path="/register/:id" element={<div className="container mx-auto px-4 py-12 text-center text-gray-500">Registration Coming Soon</div>} />
