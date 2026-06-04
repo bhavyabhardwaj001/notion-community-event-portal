@@ -10,8 +10,6 @@ const Registration = () => {
   const { id } = useParams();
   const [event, setEvent] = useState(null);
   const [loadingEvent, setLoadingEvent] = useState(true);
-  
-  // Form State
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',
@@ -69,7 +67,6 @@ const Registration = () => {
     );
   }
 
-  // --- SUCCESS STATE ---
   if (success) {
     return (
       <div className="min-h-[80vh] flex items-center justify-center bg-gray-50 px-4 py-12">
@@ -88,9 +85,18 @@ const Registration = () => {
           </motion.div>
           
           <h2 className="text-3xl font-bold text-gray-900 mb-4 tracking-tight">You're In!</h2>
-          <p className="text-gray-500 mb-8">
-            You have successfully registered for <span className="font-semibold text-gray-900">{event?.title}</span>. We've sent a confirmation to your email.
+          <p className="text-gray-500 mb-6">
+            You have successfully registered for <span className="font-semibold text-gray-900">{event?.title}</span>.
           </p>
+          
+          <div className="bg-gray-50 border border-gray-100 rounded-2xl p-6 text-left mb-8 max-w-sm mx-auto">
+            <h3 className="font-semibold text-gray-900 border-b border-gray-200 pb-2 mb-3 text-sm uppercase tracking-wide">Event Summary</h3>
+            <div className="space-y-2 text-sm text-gray-600">
+              <p><strong className="text-gray-900">Date:</strong> {new Date(event?.date).toLocaleDateString()}</p>
+              <p><strong className="text-gray-900">Time:</strong> {event?.time}</p>
+              <p><strong className="text-gray-900">Venue:</strong> {event?.venue}</p>
+            </div>
+          </div>
           
           <Link to="/events">
             <Button variant="primary" className="w-full h-12">
@@ -102,7 +108,6 @@ const Registration = () => {
     );
   }
 
-  // --- REGISTRATION FORM ---
   return (
     <div className="min-h-screen bg-gray-50 py-12">
       <div className="container mx-auto px-4 max-w-3xl">
@@ -134,7 +139,7 @@ const Registration = () => {
                   value={formData.fullName} 
                   onChange={handleChange} 
                   required 
-                  placeholder="John Doe"
+                  placeholder="Rahul Sharma"
                 />
                 <Input 
                   label="Email Address" 
@@ -143,7 +148,7 @@ const Registration = () => {
                   value={formData.email} 
                   onChange={handleChange} 
                   required 
-                  placeholder="john@example.com"
+                  placeholder="rahul@college.edu"
                 />
               </div>
 

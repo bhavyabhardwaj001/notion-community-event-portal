@@ -88,7 +88,7 @@ const Dashboard = () => {
           <div className="w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center">
             <LayoutDashboard className="w-5 h-5 text-white" />
           </div>
-          <span className="font-bold text-lg tracking-tight">Admin OS</span>
+          <span className="font-bold text-lg tracking-tight">Admin Panel</span>
         </div>
 
         <nav className="flex-1 space-y-2">
@@ -200,7 +200,7 @@ const Dashboard = () => {
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <Input label="Speaker Name" name="speaker" value={eventData.speaker} onChange={handleEventChange} required placeholder="John Doe" />
-                <Input label="Banner Image URL" name="banner" value={eventData.banner} onChange={handleEventChange} placeholder="https://unsplash.com/..." />
+                <Input label="Banner Image URL" name="banner" value={eventData.banner} onChange={handleEventChange} placeholder="/event.avif" />
               </div>
 
               <div className="flex flex-col">

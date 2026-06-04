@@ -8,73 +8,21 @@ import EventCard from '../components/EventCard';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
-// --- Subcomponents for Clean Architecture ---
 
 const HeroVisual = () => (
-  <div className="relative w-full h-[400px] lg:h-[550px] flex items-center justify-center">
-    {/* Decorative background gradients */}
-    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-blue-100 rounded-full blur-[80px] opacity-60"></div>
-    <div className="absolute top-1/4 right-1/4 w-48 h-48 bg-purple-100 rounded-full blur-[60px] opacity-60"></div>
-
-    {/* Center Main Card */}
+  <div className="relative w-full h-[300px] lg:h-[500px] flex items-center justify-center p-4">
     <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      animate={{ opacity: 1, y: 0 }}
+      initial={{ opacity: 0, scale: 0.95 }}
+      animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
-      className="absolute z-20 w-80 bg-white/90 backdrop-blur-xl rounded-2xl shadow-2xl border border-white/40 p-5"
+      className="relative w-full h-full rounded-3xl overflow-hidden shadow-2xl border border-gray-100"
     >
-      <div className="flex items-start gap-4 mb-4">
-        <div className="w-12 h-12 rounded-xl bg-gray-900 text-white flex items-center justify-center shadow-lg">
-          <CalendarDays className="w-6 h-6" />
-        </div>
-        <div>
-          <h4 className="font-semibold text-gray-900 text-lg">Hackathon 2026</h4>
-          <p className="text-sm text-gray-500">Dec 15 • 48 Hours</p>
-        </div>
-      </div>
-      <div className="space-y-3 mb-5">
-        <div className="h-2 bg-gray-100 rounded w-full"></div>
-        <div className="h-2 bg-gray-100 rounded w-5/6"></div>
-        <div className="h-2 bg-gray-100 rounded w-4/6"></div>
-      </div>
-      <div className="flex items-center justify-between mt-4 pt-4 border-t border-gray-100">
-        <div className="flex -space-x-2">
-          {[1,2,3].map(i => (
-            <div key={i} className="w-8 h-8 rounded-full border-2 border-white bg-gray-200"></div>
-          ))}
-        </div>
-        <span className="text-xs font-semibold text-blue-600 bg-blue-50 px-2 py-1 rounded-md">150+ Registered</span>
-      </div>
-    </motion.div>
-
-    {/* Floating Card Left */}
-    <motion.div
-      animate={{ y: [0, -20, 0] }}
-      transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
-      className="absolute z-10 top-[15%] left-[5%] w-64 bg-white/60 backdrop-blur-md rounded-2xl shadow-xl border border-white/40 p-4 hidden md:block"
-    >
-      <div className="flex items-center gap-3">
-        <div className="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center">
-          <Zap className="text-green-600 w-5 h-5"/>
-        </div>
-        <div>
-          <p className="text-xs font-semibold text-gray-900">Registration Confirmed</p>
-          <p className="text-[10px] text-gray-500">Just now</p>
-        </div>
-      </div>
-    </motion.div>
-
-    {/* Floating Card Right */}
-    <motion.div
-      animate={{ y: [0, 15, 0] }}
-      transition={{ repeat: Infinity, duration: 5, ease: "easeInOut", delay: 1 }}
-      className="absolute z-10 bottom-[20%] right-[5%] w-56 bg-white/80 backdrop-blur-md rounded-2xl shadow-xl border border-white/40 p-4 hidden md:block"
-    >
-      <div className="space-y-2">
-        <div className="h-20 bg-gray-100 rounded-lg w-full mb-3"></div>
-        <div className="h-3 bg-gray-200 rounded w-3/4"></div>
-        <div className="h-3 bg-gray-100 rounded w-1/2"></div>
-      </div>
+      <img 
+        src="/hackathon_event.avif" 
+        alt="Students collaborating at a hackathon" 
+        className="w-full h-full object-cover"
+      />
+      <div className="absolute inset-0 bg-gradient-to-tr from-blue-900/20 to-transparent"></div>
     </motion.div>
   </div>
 );
@@ -102,14 +50,11 @@ const Home = () => {
   return (
     <div className="flex flex-col min-h-screen bg-white overflow-hidden">
       
-      {/* 1. HERO SECTION */}
       <section className="relative pt-20 pb-16 lg:pt-32 lg:pb-24 border-b border-gray-100 overflow-hidden">
-        {/* Subtle grid background */}
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] opacity-30 pointer-events-none"></div>
         
         <div className="container mx-auto px-4 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center">
-            {/* Left Content */}
             <motion.div 
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
@@ -151,7 +96,6 @@ const Home = () => {
         </div>
       </section>
 
-      {/* 2. COMMUNITY TRUST SECTION */}
       <section className="py-8 bg-gray-50 border-b border-gray-100">
         <div className="container mx-auto px-4">
           <div className="flex flex-wrap justify-center gap-8 md:gap-24 text-center">
@@ -177,7 +121,6 @@ const Home = () => {
         </div>
       </section>
 
-      {/* 3. WHY USE THE PLATFORM */}
       <section className="py-24 bg-white relative">
         <div className="container mx-auto px-4 lg:px-8 max-w-7xl">
           <div className="text-center max-w-2xl mx-auto mb-16">
@@ -223,62 +166,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* 4. PLATFORM SHOWCASE SECTION */}
-      <section className="py-24 bg-gray-900 text-white overflow-hidden relative">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:24px_24px]"></div>
-        <div className="container mx-auto px-4 lg:px-8 max-w-7xl relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-            >
-              <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-tight tracking-tight">
-                Built for a flawless <br/> student experience.
-              </h2>
-              <p className="text-gray-400 text-lg mb-8 max-w-md">
-                Browse detailed event pages, track your registrations, and get all the information you need in a single, beautiful dashboard.
-              </p>
-              <ul className="space-y-4">
-                {['Real-time event tracking', 'Beautiful typography and layouts', '1-click registration flow'].map((item, i) => (
-                  <li key={i} className="flex items-center text-gray-300">
-                    <CheckCircle2 className="w-5 h-5 text-blue-500 mr-3 shrink-0" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
 
-            {/* Browser Mockup */}
-            <motion.div 
-              style={{ y }}
-              className="relative rounded-xl overflow-hidden bg-white/5 border border-white/10 shadow-2xl backdrop-blur-sm"
-            >
-              {/* Browser Header */}
-              <div className="h-10 bg-white/10 flex items-center px-4 gap-2 border-b border-white/10">
-                <div className="w-3 h-3 rounded-full bg-red-400"></div>
-                <div className="w-3 h-3 rounded-full bg-yellow-400"></div>
-                <div className="w-3 h-3 rounded-full bg-green-400"></div>
-                <div className="mx-auto h-5 w-48 bg-white/5 rounded text-center"></div>
-              </div>
-              {/* Mockup Body */}
-              <div className="p-6">
-                <div className="flex justify-between items-center mb-6">
-                  <div className="w-32 h-6 bg-white/10 rounded"></div>
-                  <div className="w-10 h-10 bg-white/10 rounded-full"></div>
-                </div>
-                <div className="w-full h-48 bg-white/5 rounded-lg mb-6"></div>
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="h-24 bg-white/5 rounded-lg"></div>
-                  <div className="h-24 bg-white/5 rounded-lg"></div>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* 5. UPCOMING OPPORTUNITIES */}
       <section className="py-24 bg-white">
         <div className="container mx-auto px-4 lg:px-8 max-w-7xl">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
@@ -321,7 +209,6 @@ const Home = () => {
         </div>
       </section>
 
-      {/* 6. FINAL CTA SECTION */}
       <section className="py-24 bg-gray-50 border-t border-gray-100">
         <div className="container mx-auto px-4 text-center max-w-3xl">
           <motion.div

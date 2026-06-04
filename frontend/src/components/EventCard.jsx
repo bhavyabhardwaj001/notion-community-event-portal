@@ -19,7 +19,7 @@ const EventCard = ({ event }) => {
       {/* Banner */}
       <div className="h-48 w-full bg-gray-100 overflow-hidden relative">
         <img 
-          src={event.banner || 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&q=80&w=800'} 
+          src={event.banner || '/fallback.avif'} 
           alt={event.title}
           className="w-full h-full object-cover"
         />

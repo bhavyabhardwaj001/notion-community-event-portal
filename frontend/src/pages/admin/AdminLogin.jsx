@@ -40,7 +40,7 @@ const AdminLogin = () => {
         </div>
         
         <h1 className="text-2xl font-bold text-gray-900 mb-2">Admin Portal</h1>
-        <p className="text-gray-500 mb-8 text-sm">Enter the master password to access the dashboard.</p>
+        <p className="text-gray-500 mb-8 text-sm">Enter the admin password to access the dashboard.</p>
 
         {error && (
           <div className="bg-red-50 text-red-600 p-3 rounded-lg mb-6 text-sm font-medium border border-red-100">
@@ -51,7 +51,7 @@ const AdminLogin = () => {
         <form onSubmit={handleLogin} className="space-y-6 text-left">
           <Input 
             type="password"
-            label="Master Password"
+            label="Password"
             placeholder="••••••••"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
