@@ -6,6 +6,8 @@ import Home from './pages/Home';
 import Events from './pages/Events';
 import EventDetails from './pages/EventDetails';
 import Registration from './pages/Registration';
+import AdminLogin from './pages/admin/AdminLogin';
+import Dashboard from './pages/admin/Dashboard';
 
 function App() {
   return (
@@ -20,6 +22,8 @@ function App() {
             <Route path="/events" element={<Events />} />
             <Route path="/events/:id" element={<EventDetails />} />
             <Route path="/register/:id" element={<Registration />} />
+            <Route path="/admin" element={<AdminLogin />} />
+            <Route path="/admin/dashboard" element={<Dashboard />} />
           </Routes>
         </main>
         

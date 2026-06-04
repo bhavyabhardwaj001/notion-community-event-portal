@@ -7,7 +7,18 @@ const connectDB = require('./config/db');
 dotenv.config();
 
 // Connect to Database
-connectDB();
+connectDB().then(async () => {
+  // Seed default admin if missing (useful for in-memory DB)
+  const Admin = require('./models/Admin');
+  const adminExists = await Admin.findOne({ email: 'admin@notion.com' });
+  if (!adminExists) {
+    await Admin.create({
+      email: 'admin@notion.com',
+      password: 'admin' // In a real app this is hashed by the model pre-save hook
+    });
+    console.log('Default Admin seeded (admin@notion.com / admin)');
+  }
+});
 
 const app = express();
 
