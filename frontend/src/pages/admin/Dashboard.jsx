@@ -158,7 +158,7 @@ const Dashboard = () => {
                         <td className="px-6 py-4 text-gray-500">{reg.email}</td>
                         <td className="px-6 py-4 text-gray-500">{reg.contactNumber}</td>
                         <td className="px-6 py-4 text-gray-500">{reg.branch} - {reg.year}</td>
-                        <td className="px-6 py-4 text-gray-400 font-mono text-xs">{reg.eventId}</td>
+                        <td className="px-6 py-4 text-gray-400 font-mono text-xs">{reg.eventId?.title || reg.eventId}</td>
                       </tr>
                     ))}
                   </tbody>

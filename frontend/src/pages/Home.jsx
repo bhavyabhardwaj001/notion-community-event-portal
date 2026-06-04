@@ -5,38 +5,8 @@ import { Link } from 'react-router-dom';
 import Button from '../components/ui/Button';
 import EventCard from '../components/EventCard';
 
-const MOCK_EVENTS = [
-  {
-    _id: '1',
-    title: 'Intro to React & Tailwind',
-    tagline: 'Learn how to build modern web interfaces from scratch.',
-    date: new Date(Date.now() + 86400000 * 3).toISOString(),
-    time: '05:00 PM',
-    venue: 'Main Auditorium',
-    speaker: 'Sarah Drasner',
-    banner: 'https://images.unsplash.com/photo-1633356122544-f134324a6cee?auto=format&fit=crop&q=80&w=800'
-  },
-  {
-    _id: '2',
-    title: 'UI/UX Design Masterclass',
-    tagline: 'Master the art of designing intuitive digital products.',
-    date: new Date(Date.now() + 86400000 * 7).toISOString(),
-    time: '02:00 PM',
-    venue: 'Design Lab',
-    speaker: 'Gary Hustwit',
-    banner: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&q=80&w=800'
-  },
-  {
-    _id: '3',
-    title: 'Hackathon Info Session',
-    tagline: 'Everything you need to know about the annual hackathon.',
-    date: new Date(Date.now() + 86400000 * 10).toISOString(),
-    time: '06:30 PM',
-    venue: 'Online (Discord)',
-    speaker: 'Community Leads',
-    banner: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&q=80&w=800'
-  }
-];
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 
 // --- Subcomponents for Clean Architecture ---
 
@@ -112,6 +82,22 @@ const HeroVisual = () => (
 const Home = () => {
   const { scrollYProgress } = useScroll();
   const y = useTransform(scrollYProgress, [0, 1], [0, -50]);
+  const [events, setEvents] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchEvents = async () => {
+      try {
+        const res = await axios.get('/api/events');
+        setEvents(res.data.slice(0, 3)); // Only get top 3
+      } catch (error) {
+        console.error('Failed to fetch events for home page');
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchEvents();
+  }, []);
 
   return (
     <div className="flex flex-col min-h-screen bg-white overflow-hidden">
@@ -308,17 +294,23 @@ const Home = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {MOCK_EVENTS.map((event, index) => (
-              <motion.div
-                key={event._id}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-              >
-                <EventCard event={event} />
-              </motion.div>
-            ))}
+            {loading ? (
+              <div className="col-span-3 text-center py-12 text-gray-500">Loading events...</div>
+            ) : events.length === 0 ? (
+              <div className="col-span-3 text-center py-12 text-gray-500">More events coming soon!</div>
+            ) : (
+              events.map((event, index) => (
+                <motion.div
+                  key={event._id}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                >
+                  <EventCard event={event} />
+                </motion.div>
+              ))
+            )}
           </div>
           
           <div className="mt-10 md:hidden">
