@@ -1,8 +1,5 @@
 const Event = require('../models/Event');
 
-// @desc    Get all events
-// @route   GET /api/events
-// @access  Public
 const getEvents = async (req, res) => {
   try {
     // Sort events by date in ascending order (upcoming first)
@@ -13,9 +10,6 @@ const getEvents = async (req, res) => {
   }
 };
 
-// @desc    Get single event by ID
-// @route   GET /api/events/:id
-// @access  Public
 const getEventById = async (req, res) => {
   try {
     const event = await Event.findById(req.params.id);
@@ -28,9 +22,6 @@ const getEventById = async (req, res) => {
   }
 };
 
-// @desc    Create an event
-// @route   POST /api/events
-// @access  Private (Admin only)
 const createEvent = async (req, res) => {
   try {
     const event = await Event.create(req.body);

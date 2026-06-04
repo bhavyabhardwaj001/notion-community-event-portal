@@ -1,17 +1,12 @@
 const Admin = require('../models/Admin');
 const jwt = require('jsonwebtoken');
 
-// Generate JWT token
 const generateToken = (id) => {
-  // Using a secret from .env, or a fallback for local dev
   return jwt.sign({ id }, process.env.JWT_SECRET || 'notion_secret_key', {
     expiresIn: '30d',
   });
 };
 
-// @desc    Auth admin & get token
-// @route   POST /api/registrations/login
-// @access  Public
 const loginAdmin = async (req, res) => {
   const { email, password } = req.body;
 

@@ -1,9 +1,6 @@
 const Registration = require('../models/Registration');
 const Event = require('../models/Event');
 
-// @desc    Register for an event
-// @route   POST /api/register
-// @access  Public
 const registerForEvent = async (req, res) => {
   try {
     const { eventId, fullName, email, contactNumber, branch, year, reason } = req.body;
@@ -41,9 +38,6 @@ const registerForEvent = async (req, res) => {
   }
 };
 
-// @desc    Get all registrations (Admin)
-// @route   GET /api/registrations
-// @access  Private (Admin only)
 const getRegistrations = async (req, res) => {
   try {
     // Populate eventId to get event details along with registrations
