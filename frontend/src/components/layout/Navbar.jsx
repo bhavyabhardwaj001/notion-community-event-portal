@@ -32,8 +32,8 @@ const Navbar = () => {
 
         {/* Call to Action */}
         <div className="flex items-center gap-6">
-          <Link to="/admin" className="text-sm font-medium text-gray-500 hover:text-gray-900 transition-colors hidden md:block">
-            Admin Login
+          <Link to="/admin" className="hidden md:block">
+            <Button variant="outline">Admin Login</Button>
           </Link>
           <Link to="/events">
             <Button variant="primary">Explore Events</Button>

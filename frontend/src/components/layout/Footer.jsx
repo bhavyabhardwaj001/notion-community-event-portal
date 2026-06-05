@@ -9,11 +9,13 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row justify-between items-center gap-4">
           <div className="flex items-center gap-2">
             <img src={logo} alt="Notion Logo" className="w-6 h-6" />
-            <span className="font-medium text-gray-900">Notion Community</span>
+            <span className="font-medium text-gray-900">Notion Community @ VIT Bhopal</span>
           </div>
           
           <div className="flex items-center gap-6 text-sm text-gray-500">
-            <span>&copy; {new Date().getFullYear()} Notion Community Events @ VIT Bhopal University.</span>
+            <span className="font-medium text-gray-800">
+              Built with <span className="text-red-500">♥</span> by <span className="font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600">Bhavya Bhardwaj</span>
+            </span>
             <Link to="/admin" className="hover:text-gray-900 transition-colors">Admin Login</Link>
           </div>
         </div>

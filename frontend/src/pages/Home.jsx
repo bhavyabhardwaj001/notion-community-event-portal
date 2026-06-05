@@ -4,6 +4,7 @@ import { ArrowRight, Compass, Zap, Users, CalendarDays, MousePointerClick, Check
 import { Link } from 'react-router-dom';
 import Button from '../components/ui/Button';
 import EventCard from '../components/EventCard';
+import logo from '../assets/notion_logo.png';
 
 import { useState, useEffect } from 'react';
 import axios from 'axios';
@@ -61,6 +62,10 @@ const Home = () => {
               transition={{ duration: 0.6 }}
               className="max-w-xl"
             >
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-gray-100 border border-gray-200 text-sm font-medium text-gray-800 mb-6">
+                <CalendarDays className="w-4 h-4 text-gray-500" />
+                Event Registration Portal
+              </div>
               <h1 className="text-5xl lg:text-7xl font-bold tracking-tight text-gray-900 leading-[1.1] mb-6">
                 Discover Events.<br/>
                 Build Skills.<br/>
@@ -92,27 +97,56 @@ const Home = () => {
         </div>
       </section>
 
-      <section className="py-8 bg-gray-50 border-b border-gray-100">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-wrap justify-center gap-8 md:gap-24 text-center">
-            {[
-              { label: 'Students', value: '2000+' },
-              { label: 'Workshops', value: '50+' },
-              { label: 'Hackathons', value: '15+' },
-              { label: 'Speakers', value: '100+' },
-            ].map((stat, i) => (
+      <section className="py-28 bg-gray-900 text-white relative overflow-hidden">
+        {/* Animated Background Gradients */}
+        <motion.div 
+          animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }}
+          transition={{ repeat: Infinity, duration: 8, ease: "easeInOut" }}
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-blue-500/20 rounded-full blur-[120px] pointer-events-none"
+        ></motion.div>
+        
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff10_1px,transparent_1px),linear-gradient(to_bottom,#ffffff10_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] opacity-20 pointer-events-none"></div>
+        
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="text-center max-w-3xl mx-auto flex flex-col items-center">
+            
+            {/* Floating Logo */}
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.5, rotate: -10 }}
+              whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
+              viewport={{ once: true }}
+              transition={{ type: "spring", stiffness: 200, damping: 20 }}
+              className="relative mb-10"
+            >
               <motion.div 
-                key={i}
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="flex flex-col"
+                animate={{ y: [-10, 10, -10] }}
+                transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
+                className="w-24 h-24 bg-white rounded-3xl shadow-[0_0_50px_rgba(255,255,255,0.3)] flex items-center justify-center p-5 relative z-10"
               >
-                <span className="text-3xl font-bold text-gray-900">{stat.value}</span>
-                <span className="text-sm font-medium text-gray-500 uppercase tracking-wider mt-1">{stat.label}</span>
+                <img src={logo} alt="Notion Logo" className="w-full h-full object-contain" />
               </motion.div>
-            ))}
+            </motion.div>
+
+            {/* Staggered Text */}
+            <motion.h2 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400"
+            >
+              Notion Community <br/> @ VIT Bhopal
+            </motion.h2>
+            
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="text-xl md:text-2xl text-gray-400 font-medium tracking-wide"
+            >
+              Bringing Notion closer to you
+            </motion.p>
           </div>
         </div>
       </section>
