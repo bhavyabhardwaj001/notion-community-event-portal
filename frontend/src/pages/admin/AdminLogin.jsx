@@ -17,13 +17,10 @@ const AdminLogin = () => {
     setError('');
 
     try {
-      // POST to our admin login route (using the default seeded admin email)
       const response = await axios.post('/api/registrations/login', { email: 'admin@notion.com', password });
       
-      // Save token to localStorage
       localStorage.setItem('adminToken', response.data.token);
       
-      // Redirect to dashboard
       navigate('/admin/dashboard');
     } catch (err) {
       setError(err.response?.data?.message || 'Invalid admin password.');

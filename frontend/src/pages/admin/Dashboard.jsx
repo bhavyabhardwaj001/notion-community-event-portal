@@ -10,12 +10,10 @@ const Dashboard = () => {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState('registrations'); // 'registrations' or 'create'
   
-  // Data States
   const [registrations, setRegistrations] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // Form States for creating event
   const [eventData, setEventData] = useState({
     title: '', tagline: '', description: '', date: '', time: '', venue: '', speaker: '', banner: ''
   });
@@ -23,14 +21,12 @@ const Dashboard = () => {
   const [createMsg, setCreateMsg] = useState('');
 
   useEffect(() => {
-    // Check Auth
     const token = localStorage.getItem('adminToken');
     if (!token) {
       navigate('/admin');
       return;
     }
 
-    // Fetch Registrations
     const fetchRegistrations = async () => {
       try {
         setLoading(true);

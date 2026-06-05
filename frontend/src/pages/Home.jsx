@@ -61,17 +61,13 @@ const Home = () => {
               transition={{ duration: 0.6 }}
               className="max-w-xl"
             >
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gray-100 text-sm font-medium text-gray-900 mb-6">
-                <span className="flex h-2 w-2 rounded-full bg-blue-500"></span>
-                Platform v2.0 is live
-              </div>
               <h1 className="text-5xl lg:text-7xl font-bold tracking-tight text-gray-900 leading-[1.1] mb-6">
                 Discover Events.<br/>
                 Build Skills.<br/>
                 <span className="text-gray-400">Connect.</span>
               </h1>
               <p className="text-lg lg:text-xl text-gray-500 mb-8 leading-relaxed">
-                A modern platform to explore workshops, hackathons, speaker sessions, and community opportunities. Built for students who want to ship fast and grow.
+                A modern platform to explore workshops, hackathons, and community opportunities for the students of VIT Bhopal University.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link to="/events">

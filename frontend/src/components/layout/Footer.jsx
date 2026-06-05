@@ -13,7 +13,7 @@ const Footer = () => {
           </div>
           
           <div className="flex items-center gap-6 text-sm text-gray-500">
-            <span>&copy; {new Date().getFullYear()} Notion Community Events.</span>
+            <span>&copy; {new Date().getFullYear()} Notion Community Events @ VIT Bhopal University.</span>
             <Link to="/admin" className="hover:text-gray-900 transition-colors">Admin Login</Link>
           </div>
         </div>

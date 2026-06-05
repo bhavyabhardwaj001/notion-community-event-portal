@@ -3,10 +3,8 @@ const dotenv = require('dotenv');
 const cors = require('cors');
 const connectDB = require('./config/db');
 
-// Load environment variables
 dotenv.config();
 
-// Connect to Database
 connectDB().then(async () => {
   const Admin = require('./models/Admin');
   const adminExists = await Admin.findOne({ email: 'admin@notion.com' });
@@ -21,16 +19,13 @@ connectDB().then(async () => {
 
 const app = express();
 
-// Middleware
 app.use(express.json());
 app.use(cors());
 
-// Basic test route
 app.get('/', (req, res) => {
   res.send('Notion Community Event Portal API is running...');
 });
 
-// API Routes
 app.use('/api/events', require('./routes/eventRoutes'));
 app.use('/api/register', require('./routes/registrationRoutes'));
 app.use('/api/registrations', require('./routes/adminRoutes'));

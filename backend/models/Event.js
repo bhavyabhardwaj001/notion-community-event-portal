@@ -35,7 +35,7 @@ const eventSchema = new mongoose.Schema({
     required: [true, 'Please add a banner image URL'],
   }
 }, {
-  timestamps: true // Automatically creates createdAt and updatedAt fields
+  timestamps: true
 });
 
 module.exports = mongoose.model('Event', eventSchema);
